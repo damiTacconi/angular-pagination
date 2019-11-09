@@ -35,12 +35,11 @@ export class TableComponent implements OnInit {
   }
 
   changePage(page: number) {
-    console.log("CAMBIO DE PAGINA: " + page);
+
     this.changePageEvent.emit(page);
   }
 
   ngOnInit() {
-    console.log("TOTAL: " + this.total)
 
   }
 

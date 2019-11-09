@@ -1,1 +1,12 @@
-<button (click)="changePage(i)" *ngFor="let item of [].constructor(total); let i = index">{{ i }}</button>
+<div class="paginator">
+    <button class="btn-dot" (click)="previous()" [disabled]="currentPage <= 0">
+        Prev
+    </button>
+    <button class="btn-dot" [ngClass]="{'selected': item-1==currentPage}" *ngFor="let item of range; let i = index;"
+        (click)="changePage(item-1)">
+        {{ item }}
+    </button>
+    <button class="btn-dot" (click)="next()" [disabled]="currentPage >= total-1">
+        Next
+    </button>
+</div>

@@ -21,6 +21,8 @@ export class ProductsListComponent implements OnInit {
       'page': page
     }).subscribe(response => {
       this.productList = response.items;
+      this.total = response.total;
+      this.currentPage = page;
     })
   }
   ngOnInit() {

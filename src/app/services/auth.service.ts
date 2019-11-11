@@ -11,7 +11,7 @@ export class AuthService {
   url = "https://utn2019-avanzada2-tp9.herokuapp.com/";
   loginUrl = `${this.url}login`;
   registerUrl = `${this.url}sign-up`;
-
+  userIdentitiesUrl = `${this.url}users/identities`
   redirectUrl = 'products';
 
   constructor(private http: HttpClient) { }
@@ -52,5 +52,9 @@ export class AuthService {
     });
 
     return this.http.post(this.registerUrl, user, httpOptions);
+  }
+
+  validateEmail(email: string = "myUserEmaiasdasdl@gmail.com") {
+    return this.http.get(this.userIdentitiesUrl, { params: { email } })
   }
 }

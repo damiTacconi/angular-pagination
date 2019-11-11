@@ -36,6 +36,12 @@ export class LoginComponent implements OnInit {
       })
     }
   }
+  get formEmail() {
+    return this.loginForm.get('email')
+  }
+  get formPassword() {
+    return this.loginForm.get('password')
+  }
 
 
 }

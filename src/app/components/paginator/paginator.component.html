@@ -2,7 +2,7 @@
     <button class="btn-dot" (click)="previous()" [disabled]="paginatorSettings.currentPage <= 0">
         Prev
     </button>
-    <button *ngIf="paginatorSettings.withShortcuts" class="btn-dot" (click)="changePage(0)"
+    <button *ngIf="paginatorSettings.withShortcuts" class="btn-dot btn-dot-shortcut" (click)="changePage(0)"
         [hidden]="paginatorSettings.currentPage < paginatorSettings.range+1">
         1
     </button>
@@ -10,12 +10,12 @@
         *ngFor="let item of range; let i = index;" (click)="changePage(item-1)">
         {{ item }}
     </button>
-    <button *ngIf="paginatorSettings.withShortcuts" class="btn-dot"
+    <button *ngIf="paginatorSettings.withShortcuts" class="btn-dot btn-dot-shortcut"
         [hidden]="paginatorSettings.currentPage+1 >= paginatorSettings.total-(paginatorSettings.range+1)"
         (click)="changePage(paginatorSettings.total - 1)">
         {{paginatorSettings.total}}
     </button>
-    <button class="btn-dot" (click)="next()" [disabled]="paginatorSettings.currentPage+1 >= paginatorSettings.total">
+    <button class="btn-dot " (click)="next()" [disabled]="paginatorSettings.currentPage+1 >= paginatorSettings.total">
         Next
     </button>
 </div>

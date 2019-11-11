@@ -1,31 +1,43 @@
-<form (ngSubmit)="signUp()" [formGroup]="registerForm">
-    <label for="input-email">Email</label>
-    <input type="email" formControlName="email" id="input-email">
-    <span *ngIf="formEmail.invalid">
-        <div *ngIf="formEmail.errors.email" class="alert alert-danger">
-            Please, insert a valid Email, Example: johnDoe@gmail.com
+<div class="main">
+    <form class="login-form" (ngSubmit)="signUp()" [formGroup]="registerForm">
+        <div class="form-title">
+            <h1>Register</h1>
         </div>
-        <div *ngIf="formEmail.errors.invalidEmail" class="alert alert-danger">
-            This email already exists.
+        <div class="form-group">
+            <label for="input-email">Email</label>
+            <input type="email" formControlName="email" id="input-email">
+            <span *ngIf="formEmail.invalid" class="form-error">
+                <div *ngIf="formEmail.errors.email" class="alert alert-danger">
+                    Please, insert a valid Email, Example: johnDoe@gmail.com
+                </div>
+                <div *ngIf="formEmail.errors.invalidEmail" class="alert alert-danger">
+                    This email already exists.
+                </div>
+            </span>
         </div>
-    </span>
-    <label for="input-password">Password</label>
-    <input type="password" (keyup)="changePassword($event)" formControlName="password" id="input-password">
-    <span *ngIf="formPassword.invalid">
-        <div *ngIf="formPassword.errors.required && formPassword.touched" class="alert alert-danger">
-            Password is required
+        <div class="form-group">
+            <label for="input-password">Password</label>
+            <input type="password" (keyup)="changePassword($event)" formControlName="password" id="input-password">
+            <span *ngIf="formPassword.invalid" class="form-error">
+                <div *ngIf="formPassword.errors.required && formPassword.touched" class="alert alert-danger">
+                    Password is required
+                </div>
+            </span>
         </div>
-    </span>
-    <label for="input-confirm-password">Confirm Password</label>
-    <input type="password" (change)="changeConfirmPassword($event)" formControlName="confirmPassword"
-        id="input-confirm-password">
-    <span *ngIf="formConfirmPassword.invalid">
-        <div *ngIf="formConfirmPassword.errors.required && formConfirmPassword.touched" class="alert alert-danger">
-            Confirm Password is required
+        <div class="form-group">
+            <label for="input-confirm-password">Confirm Password</label>
+            <input type="password" (change)="changeConfirmPassword($event)" formControlName="confirmPassword"
+                id="input-confirm-password">
+            <span *ngIf="formConfirmPassword.invalid" class="form-error">
+                <div *ngIf="formConfirmPassword.errors.required && formConfirmPassword.touched"
+                    class="alert alert-danger">
+                    Confirm Password is required
+                </div>
+                <div *ngIf="formConfirmPassword.errors.passwordInvalid" class="alert alert-danger">
+                    Password doesn't match
+                </div>
+            </span>
         </div>
-        <div *ngIf="formConfirmPassword.errors.passwordInvalid" class="alert alert-danger">
-            Password doesn't match
-        </div>
-    </span>
-    <button type="submit" [disabled]="!registerForm.valid">Sign Up</button>
-</form>
+        <button type="submit" [disabled]="!registerForm.valid || submitted">Sign Up</button>
+    </form>
+</div>

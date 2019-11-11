@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
   password: string = '';
+  submitted: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -30,6 +31,7 @@ export class RegisterComponent implements OnInit {
 
   signUp() {
     if (this.registerForm.valid) {
+      this.submitted = true;
       const { email, password } = this.registerForm.controls;
       const user = new UserCredentials();
       user.email = email.value;
@@ -39,6 +41,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['']);
       }, error => {
         alert(`NO SE PUDO REGISTRAR: ${error.error.message}`);
+        this.submitted = false;
       })
     }
   }

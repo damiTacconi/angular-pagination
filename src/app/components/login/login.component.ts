@@ -12,6 +12,7 @@ import { UserCredentials } from 'src/app/models/user-credentials';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  submitted: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
+      this.submitted = true;
       const { email, password } = this.loginForm.controls;
       const user = new UserCredentials();
       user.email = email.value;
@@ -32,7 +34,8 @@ export class LoginComponent implements OnInit {
       this.authService.signIn(user).subscribe(response => {
         this.router.navigate([this.authService.redirectUrl]);
       }, error => {
-        alert(`NO SE PUDO LOGUEAR: ${error}`);
+        this.submitted = false;
+        alert(`NO SE PUDO LOGUEAR: ${error.error.message}`);
       })
     }
   }

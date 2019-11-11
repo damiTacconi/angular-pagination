@@ -13,7 +13,7 @@ export class ProductsListComponent implements OnInit {
   productList = new Array<Product>();
   paginatorSettings: PaginatorSettings;
 
-  pageSize: number = 7;
+  pageSize: number = 8;
 
   constructor(private productsService: ProductsService) { }
 
@@ -28,11 +28,14 @@ export class ProductsListComponent implements OnInit {
       this.paginatorSettings.pageSize = this.pageSize;
       this.paginatorSettings.total = response.total;
       this.paginatorSettings.currentPage = page;
-      this.paginatorSettings.range = 5;
-      this.paginatorSettings.withShortcuts = false;
+      this.paginatorSettings.range = 3;
+      this.paginatorSettings.withShortcuts = true;
     })
   }
 
-  ngOnInit() { this.loadPage(0); }
+  ngOnInit() {
+
+    this.loadPage(0);
+  }
 
 }

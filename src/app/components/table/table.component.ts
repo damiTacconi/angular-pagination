@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { PaginatorSettings } from 'src/app/models/paginator-settings';
 
 @Component({
   selector: 'app-table',
@@ -10,13 +11,10 @@ export class TableComponent implements OnInit {
   Object = Object;
 
   @Input()
+  paginatorSettings: PaginatorSettings;
+
+  @Input()
   items = new Array();
-
-  @Input()
-  currentPage: number;
-
-  @Input()
-  total: number;
 
   @Output()
   changePageEvent = new EventEmitter<number>();
@@ -25,10 +23,8 @@ export class TableComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['total']) {
-      this.total = changes.total.currentValue;
-    } else if (changes['currentPage']) {
-      this.currentPage = changes.currentPage.currentValue;
+    if (changes['paginatorSettings']) {
+      this.paginatorSettings = changes.paginatorSettings.currentValue;
     } else if (changes['items']) {
       this.items = changes.items.currentValue;
     }

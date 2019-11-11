@@ -12,6 +12,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { TableComponent } from './components/table/table.component';
 import { RowItemComponent } from './components/row-item/row-item.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     ProductsListComponent,
     TableComponent,
     RowItemComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,

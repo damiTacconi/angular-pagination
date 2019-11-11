@@ -11,5 +11,5 @@
             </ng-container>
         </tbody>
     </table>
-    <app-paginator [total]="total" [currentPage]="currentPage" (changePageEvent)="changePage($event)"></app-paginator>
+    <app-paginator [paginatorSettings]="paginatorSettings" (changePageEvent)="changePage($event)"></app-paginator>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
+import { PaginatorSettings } from 'src/app/models/paginator-settings';
 
 @Component({
   selector: 'app-products-list',
@@ -10,31 +11,28 @@ import { Product } from 'src/app/models/product';
 export class ProductsListComponent implements OnInit {
 
   productList = new Array<Product>();
-  total: number = 0;
-  currentPage = 0;
+  paginatorSettings: PaginatorSettings;
+
+  pageSize: number = 7;
 
   constructor(private productsService: ProductsService) { }
 
-  changePage(page: number) {
+  loadPage(page: number) {
+
     this.productsService.getProducts({
-      'size': 10,
+      'size': this.pageSize,
       'page': page
     }).subscribe(response => {
       this.productList = response.items;
-      this.total = response.total;
-      this.currentPage = page;
+      this.paginatorSettings = new PaginatorSettings();
+      this.paginatorSettings.pageSize = this.pageSize;
+      this.paginatorSettings.total = response.total;
+      this.paginatorSettings.currentPage = page;
+      this.paginatorSettings.range = 5;
+      this.paginatorSettings.withShortcuts = false;
     })
   }
-  ngOnInit() {
-    this.productsService.getProducts({
-      'size': 10,
-      'page': 0
-    }).subscribe(response => {
-      console.log(response);
-      this.productList = response.items;
-      this.total = response.total;
 
-    })
-  }
+  ngOnInit() { this.loadPage(0); }
 
 }

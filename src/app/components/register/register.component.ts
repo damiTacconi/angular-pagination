@@ -16,6 +16,10 @@ export class RegisterComponent implements OnInit {
 
   password: string = '';
   submitted: boolean = false;
+  message = {
+    show: false,
+    type: 'success'
+  }
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -29,6 +33,10 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  hideMessage() {
+    this.message.show = false;
+  }
+
   signUp() {
     if (this.registerForm.valid) {
       this.submitted = true;
@@ -37,11 +45,15 @@ export class RegisterComponent implements OnInit {
       user.email = email.value;
       user.password = password.value;
       this.authService.signUp(user).subscribe(response => {
-        alert("CREADO CON EXITO !");
-        this.router.navigate(['']);
-      }, error => {
-        alert(`NO SE PUDO REGISTRAR: ${error.error.message}`);
         this.submitted = false;
+        this.registerForm.reset();
+        this.message.type = 'success';
+        this.message.show = true;
+
+      }, error => {
+        this.submitted = false;
+        this.message.type = 'danger';
+        this.message.show = true;
       })
     }
   }

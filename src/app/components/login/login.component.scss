@@ -1,5 +1,9 @@
 @import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+.app-message{
+    position: absolute;
+    top: 5rem;
+}
 .main{
     margin:0;
     display: grid;
@@ -13,6 +17,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 300px;
     background: #FFF;
+    margin: 0 auto;
 }
 
 .form-error{

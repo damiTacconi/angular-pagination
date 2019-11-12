@@ -1,5 +1,10 @@
 @import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+.app-message{
+    position: absolute;
+    top:5rem;
+}
+
 .main{
     margin:0;
     display: grid;
@@ -7,12 +12,13 @@
     height: 92vh;
     background: rgb(60, 134, 202);
 }
-.login-form{
+.register-form{
     border-radius: 5px;
     padding:1.5rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 300px;
     background: #FFF;
+  margin: 0 auto;
 }
 
 .form-error{

@@ -13,6 +13,10 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   submitted: boolean = false;
+  message = {
+    show: false,
+    type: 'success'
+  }
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -22,6 +26,10 @@ export class LoginComponent implements OnInit {
       'email': new FormControl('', [Validators.email, Validators.required]),
       'password': new FormControl('', [Validators.required])
     })
+  }
+
+  hideMessage() {
+    this.message.show = false;
   }
 
   login() {
@@ -35,7 +43,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate([this.authService.redirectUrl]);
       }, error => {
         this.submitted = false;
-        alert(`NO SE PUDO LOGUEAR: ${error.error.message}`);
+        this.message.type = 'danger';
+        this.message.show = true;
       })
     }
   }

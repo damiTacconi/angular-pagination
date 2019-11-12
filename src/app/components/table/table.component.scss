@@ -1,21 +1,11 @@
+@import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 table{
     font-family: sans-serif;
     width: 100%;
-}
-tr:nth-child(odd){
-    background: #eee;
-}
-tr:hover{
-    background: #232323;
-    color:whitesmoke;
-}
-th{
-    padding:.5rem;
-    text-transform: uppercase;
-    background: #121212;
-    color:#fff;
+
 }
 
-tbody{
-    border:1px solid black;
+th{
+    text-transform: uppercase;
 }

@@ -14,6 +14,7 @@ import { RowItemComponent } from './components/row-item/row-item.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     RowItemComponent,
     PaginatorComponent,
     NavComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

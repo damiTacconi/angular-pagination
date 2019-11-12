@@ -38,6 +38,15 @@
                 </div>
             </span>
         </div>
-        <button type="submit" [disabled]="!registerForm.valid || submitted">Sign Up</button>
+        <button type="submit" class="btn-block" [disabled]="!registerForm.valid || submitted">
+            <ng-container *ngIf="!submitted;else loadSpinner">
+                Sign Up
+            </ng-container>
+            <ng-template #loadSpinner>
+                <div class="spinner-border text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </ng-template>
+        </button>
     </form>
 </div>

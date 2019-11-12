@@ -13,6 +13,7 @@ import { TableComponent } from './components/table/table.component';
 import { RowItemComponent } from './components/row-item/row-item.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { NavComponent } from './components/nav/nav.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [

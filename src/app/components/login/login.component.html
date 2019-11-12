@@ -32,6 +32,15 @@
     </div>
 
 
-    <button type="submit" [disabled]="!loginForm.valid || submitted">Sign in</button>
+    <button type="submit" class="btn-block" [disabled]="!loginForm.valid || submitted">
+      <ng-container *ngIf="!submitted;else loadSpinner">
+        Sign In
+      </ng-container>
+      <ng-template #loadSpinner>
+        <div class="spinner-border text-secondary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </ng-template>
+    </button>
   </form>
 </div>

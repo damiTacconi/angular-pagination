@@ -38,12 +38,12 @@ export class PaginatorComponent implements OnInit {
     }
   }
 
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['paginatorSettings']) {
-      this.paginatorSettings = changes.paginatorSettings.currentValue;
-      this.paginatorSettings.total = Math.ceil(this.paginatorSettings.total / this.paginatorSettings.pageSize);
-      this.shortcuts = this.paginatorSettings.withShortcuts ? 2 : 0;
-      for (let i = 1; i <= this.paginatorSettings.total; i++)this.numbers.push(i);
+      const paginator = changes.paginatorSettings.currentValue;
+      this.paginatorSettings.total = Math.ceil(paginator.total / paginator.pageSize);
+      for (let i = 1; i <= paginator.total; i++)this.numbers.push(i);
       this.updateRange();
     }
   }
@@ -60,6 +60,7 @@ export class PaginatorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.shortcuts = this.paginatorSettings.withShortcuts ? 2 : 0;
     this.updateRange();
   }
 

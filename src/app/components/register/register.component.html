@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label for="input-password">Password</label>
-                <input type="password" (keyup)="changePassword($event)" formControlName="password" id="input-password">
+                <input type="password" (change)="changePassword($event)" formControlName="password" id="input-password">
                 <span *ngIf="formPassword.invalid" class="form-error">
                     <div *ngIf="formPassword.errors.required && formPassword.touched">
                         Password is required

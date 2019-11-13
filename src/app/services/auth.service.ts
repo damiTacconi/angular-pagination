@@ -12,7 +12,7 @@ export class AuthService {
   loginUrl = `${this.url}login`;
   registerUrl = `${this.url}sign-up`;
   userIdentitiesUrl = `${this.url}users/identities`
-  redirectUrl = 'products';
+  redirectUrl: string;
 
   constructor(private http: HttpClient) { }
 
@@ -54,7 +54,7 @@ export class AuthService {
     return this.http.post(this.registerUrl, user, httpOptions);
   }
 
-  validateEmail(email: string = "myUserEmaiasdasdl@gmail.com") {
+  validateEmail(email: string) {
     return this.http.get(this.userIdentitiesUrl, { params: { email } })
   }
 }

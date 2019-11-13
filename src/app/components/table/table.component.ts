@@ -22,13 +22,6 @@ export class TableComponent implements OnInit {
   constructor() {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['paginatorSettings']) {
-      this.paginatorSettings = changes.paginatorSettings.currentValue;
-    } else if (changes['items']) {
-      this.items = changes.items.currentValue;
-    }
-  }
 
   changePage(page: number) {
 
@@ -36,7 +29,7 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(this.paginatorSettings);
   }
 
 }

@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
       user.email = email.value;
       user.password = password.value;
       this.authService.signIn(user).subscribe(response => {
-        this.router.navigate([this.authService.redirectUrl]);
+        let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/products';
+        this.router.navigateByUrl(redirect);
       }, error => {
         this.submitted = false;
         this.message.type = 'danger';
